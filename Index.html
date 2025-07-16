@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 15 Months, Fuggan 💜</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, lavender, white);
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: lavender;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: opacity 1s ease;
+}
+
+.intro-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-screen h1 {
+  font-size: 2.5rem;
+  color: #6a1b9a;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.intro-screen button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #b39ddb;
+  color: white;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #4a148c;
+}
+
+.paragraph {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+  margin-bottom: 2rem;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heart-floating {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: pink;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: float 10s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="intro-screen" id="intro">
+    <h1>Happy 15 Months, Fuggan 💜</h1>
+    <button onclick="startJourney()">Tap to Begin Our Journey</button>
+  </div>  <div class="heart-floating" id="hearts"></div>  <div class="content" id="letter"></div>  <script>
+    const paragraphs = [
+      `Hi meri jaan… 🫶 Happy 15 months of us. Fifteen beautiful, emotional, silly, deep, and dreamy months of Nishu & Fuggan 🌷💓 ...`,
+      `I didn’t know that one random message, one casual conversation, would turn into the most beautiful part of my life...`,
+      `You used to laugh at my silly jokes. I’d laugh at your cuteness. And in between all those smiles, something gentle was blooming...`,
+      `April 17 — the day I told you I love you. My heart already belonged to you, and when you said it back, the world just stopped...`,
+      `Since that day, it's been 15 months of us — calls, messages, dreams, tears, and everything in between. You're my habit now 🫶`,
+      `Even the fights didn’t reduce my love. They made me realize how much I care. How lost I feel without you. How your silence hurts...`,
+      `I notice the little things — how your voice softens when you’re sleepy, your stubborn cute mood swings, and the way you say my name...`,
+      `I imagine our future — waking up beside you, dancing in the living room, making tea together. You and me. Real life. No distance. Just peace.`,
+      `You’ve become my comfort, my anchor, my soft place. And even on days I don’t feel okay, loving you feels natural, like breathing.`,
+      `I promise to love you in every version of yourself. I promise to protect your heart. I promise to stay, no matter how hard it gets.`,
+      `Here’s to Nishu & Fuggan — a love story not written in books, but lived in every small moment we’ve shared. And I’ll keep writing it...`,
+      `Will you love me forever, Fuggan? Because I know I will — forever yours, Nishu 🫶💌`
+    ];
+
+    let delay = 0;
+    paragraphs.forEach((text, i) => {
+      const p = document.createElement('p');
+      p.className = 'paragraph';
+      p.textContent = text;
+      p.style.animationDelay = `${delay}s`;
+      document.getElementById('letter').appendChild(p);
+      delay += 2.5;
+    });
+
+    function startJourney() {
+      document.getElementById('intro').classList.add('hidden');
+    }
+
+    function createHearts() {
+      const heartsContainer = document.getElementById('hearts');
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+        heart.style.width = heart.style.height = (10 + Math.random() * 20) + 'px';
+        heartsContainer.appendChild(heart);
+      }
+    }
+
+    createHearts();
+  </script></body>
+</html>
